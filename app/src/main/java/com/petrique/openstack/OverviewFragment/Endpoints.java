@@ -1,4 +1,4 @@
-package com.petrique.openstack;
+package com.petrique.openstack.OverviewFragment;
 
 public class Endpoints {
     private String region, type, name;

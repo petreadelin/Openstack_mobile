@@ -1,10 +1,12 @@
-package com.petrique.openstack;
+package com.petrique.openstack.OverviewFragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.petrique.openstack.R;
 
 import java.util.List;
 

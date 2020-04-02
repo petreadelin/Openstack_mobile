@@ -1,6 +1,7 @@
-package com.petrique.openstack;
+package com.petrique.openstack.OverviewFragment;
 
-import com.petrique.openstack.Endpoints;
+import com.petrique.openstack.R;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,8 +9,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -28,7 +27,7 @@ public class OverviewFragment extends Fragment { //
         super.onCreate(savedInstanceState);
         View rootView = inflater.inflate(R.layout.fragment_overview, container, false);
 
-        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view_services);
 
         mAdapter = new EndpointsAdapter(endpointsList);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
@@ -47,11 +46,17 @@ public class OverviewFragment extends Fragment { //
         Endpoints endpoints_neutron = new Endpoints("NETWORKING", "SDN", "neutron");
         endpointsList.add(endpoints_neutron);
 
+        Endpoints endpoints_octavia = new Endpoints("NETWORKING", "Load Balancing", "octavia");
+        endpointsList.add(endpoints_octavia);
+
         Endpoints endpoints_cinder = new Endpoints("STORAGE", "Block storage", "cinder");
         endpointsList.add(endpoints_cinder);
 
         Endpoints endpoints_swift = new Endpoints("STORAGE", "Object storage", "swift");
         endpointsList.add(endpoints_swift);
+
+        Endpoints endpoints_manila = new Endpoints("STORAGE", "File storage", "manila");
+        endpointsList.add(endpoints_manila);
 
         Endpoints endpoints_horizon = new Endpoints("FRONTEND", "Dashboard", "horizon");
         endpointsList.add(endpoints_horizon);

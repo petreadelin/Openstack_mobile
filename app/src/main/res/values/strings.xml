@@ -4,6 +4,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="title_activity_login">Openstack mobile</string>
+    <string name="instancesSection">Instances</string>
     <string name="prompt_username">Username</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
@@ -14,7 +15,9 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="services">Services</string>
-    <string name="name">name</string>
     <string name="type">type</string>
     <string name="region">region</string>
+    <string name="name">name</string>
+    <string name="status">status</string>
+    <string name="host">host</string>
 </resources>

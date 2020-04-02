@@ -5,4 +5,9 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="row_padding_vertical">10dp</dimen>
     <dimen name="card_height">70dp</dimen>
+    <dimen name="box_height">75dp</dimen>
+    <dimen name="title">28sp</dimen>
+
+    <dimen name="diameter">56dp</dimen>
+    <dimen name="diameter_small">45dp</dimen>
 </resources>
