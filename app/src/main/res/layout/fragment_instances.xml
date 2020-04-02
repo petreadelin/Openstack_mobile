@@ -39,7 +39,7 @@
                 android:layout_width="44dp"
                 android:layout_height="@dimen/abc_action_button_min_height_material"
                 android:layout_alignEnd="@id/instancesTV"
-                android:background="@color/window_bg">
+                android:background="@color/cardview_light_background">
 
                 <ImageView
                     android:id="@+id/endpoint_icon"

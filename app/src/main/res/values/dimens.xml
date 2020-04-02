@@ -10,4 +10,5 @@
 
     <dimen name="diameter">56dp</dimen>
     <dimen name="diameter_small">45dp</dimen>
+    <dimen name="table_cell_size">16sp</dimen>
 </resources>

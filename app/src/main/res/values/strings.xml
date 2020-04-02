@@ -20,4 +20,9 @@
     <string name="name">name</string>
     <string name="status">status</string>
     <string name="host">host</string>
+    <string name="flavors">Flavors</string>
+    <string name="flavor_name">Name</string>
+    <string name="flavor_vcpu">VCPUs</string>
+    <string name="flavor_size">Disk (in GB)</string>
+    <string name="flavor_ram">RAM (in MB)</string>
 </resources>

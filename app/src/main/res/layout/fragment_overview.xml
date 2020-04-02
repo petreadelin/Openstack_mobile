@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,7 +11,6 @@
     tools:context="com.petrique.openstack.OverviewFragment.OverviewFragment">
 
     <androidx.cardview.widget.CardView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/overviewCV"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -40,16 +40,16 @@
                 android:layout_width="44dp"
                 android:layout_height="44dp"
                 android:layout_alignEnd="@id/overviewTV"
-                android:background="@color/window_bg">
+                android:background="@color/cardview_light_background">
 
 
                 <ImageView
                     android:id="@+id/endpoint_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
                     android:layout_gravity="center_vertical"
                     android:padding="5dp"
-                    android:src="@drawable/ic_settings_applications_black_48dp" />
+                    android:src="@drawable/ic_view_carousel_black_48dp" />
             </LinearLayout>
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
