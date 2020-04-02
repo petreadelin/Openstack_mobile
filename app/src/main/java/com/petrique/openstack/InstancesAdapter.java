@@ -19,13 +19,14 @@ public class InstancesAdapter extends RecyclerView.Adapter<InstancesAdapter.MyVi
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView region, type, name;
-        public ImageButton start, pause;
+        public ImageButton start, pause, stop;
 
         public MyViewHolder(View view) {
             super(view);
             region = (TextView) view.findViewById(R.id.region);
             name = (TextView) view.findViewById(R.id.name);
             type = (TextView) view.findViewById(R.id.type);
+
             start = view.findViewById(R.id.start_buttonInstances);
             start.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -34,12 +35,22 @@ public class InstancesAdapter extends RecyclerView.Adapter<InstancesAdapter.MyVi
                     Toast.makeText(start.getContext(),"Started", Toast.LENGTH_SHORT).show();
                 }
             });
+
             pause = view.findViewById(R.id.pause_buttonInstances);
             pause.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     type.setText("Paused");
                     Toast.makeText(start.getContext(),"Paused", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            stop = view.findViewById(R.id.stop_buttonInstances);
+            stop.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    type.setText("Stop");
+                    Toast.makeText(stop.getContext(),"Stopped", Toast.LENGTH_SHORT).show();
                 }
             });
         }
