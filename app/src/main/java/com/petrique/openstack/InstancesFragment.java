@@ -41,11 +41,11 @@ public class InstancesFragment extends Fragment{
 
 
     private void prepareInstancesData() {
-        Instances instances_nginx = new Instances("host: stack1", "Active", "Nginx");
-        instancesList.add(instances_nginx);
+        Instances instances_instance01 = new Instances("m1.small", "Active", "Instance01");
+        instancesList.add(instances_instance01);
 
-        Instances instances_cockpit = new Instances("host:stack1", "Active", "Cockpit");
-        instancesList.add(instances_cockpit);
+        Instances instances_nginx = new Instances("m1.large", "Active", "Nginx");
+        instancesList.add(instances_nginx);
 
         mAdapter.notifyDataSetChanged();
     }

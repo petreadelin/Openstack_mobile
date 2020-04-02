@@ -25,4 +25,8 @@
     <string name="flavor_vcpu">VCPUs</string>
     <string name="flavor_size">Disk (in GB)</string>
     <string name="flavor_ram">RAM (in MB)</string>
+    <string name="subnets">Subnets</string>
+    <string name="images">Images</string>
+    <string name="networks">Networks</string>
+    <string name="logout">Logout</string>
 </resources>

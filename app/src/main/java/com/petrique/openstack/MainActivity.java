@@ -7,11 +7,17 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.Intent;
+import android.media.Session2Command;
+import android.media.session.MediaSessionManager;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.google.android.material.navigation.NavigationView;
 import com.petrique.openstack.OverviewFragment.OverviewFragment;
+import com.petrique.openstack.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
@@ -75,15 +81,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new NetworksFragment()).commit();
                 break;
 
+                /*
             case R.id.nav_subnets:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new SubnetsFragment()).commit();
                 break;
 
+
             case R.id.nav_routers:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new RoutersFragment()).commit();
                 break;
+                */
 
             case R.id.nav_security:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -111,4 +120,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.logout:{
+                Intent MainIntent = new Intent( MainActivity.this, LoginActivity.class);
+                startActivity(MainIntent);
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
 }
+
+
