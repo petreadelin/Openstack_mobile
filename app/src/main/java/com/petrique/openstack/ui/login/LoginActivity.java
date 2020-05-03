@@ -6,6 +6,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -18,6 +19,8 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,6 +28,7 @@ import android.widget.Toast;
 
 import com.petrique.openstack.DatabaseHelper;
 import com.petrique.openstack.MainActivity;
+import com.petrique.openstack.OverviewFragment.OverviewFragment;
 import com.petrique.openstack.R;
 import com.petrique.openstack.RegisterActivity;
 import com.petrique.openstack.ui.login.LoginViewModel;
@@ -34,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     DatabaseHelper db;
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,7 +53,19 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = findViewById(R.id.password);
         final TextView registerTextView = findViewById(R.id.register);
         final Button loginButton = findViewById(R.id.login);
+        final CheckBox remember = findViewById(R.id.remember);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
+
+        SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+        String checkbox = preferences.getString("remember", "");
+        if(checkbox.equals("true"))
+        {
+            Intent intent = new Intent (LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        }
+        else if(checkbox.equals("false")) {
+            Toast.makeText(this, "Please Sign In", Toast.LENGTH_SHORT).show();
+        }
 
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
@@ -145,6 +163,32 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(registerIntent);
             }
         });
+
+
+        remember.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                if(buttonView.isChecked())
+                {
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "true");
+                    editor.apply();
+                    Toast.makeText(LoginActivity.this, "Checked", Toast.LENGTH_SHORT).show();
+
+                }
+                else if(!buttonView.isChecked()) {
+                    SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("remember", "false");
+                    editor.apply();
+                    Toast.makeText(LoginActivity.this, "Unchecked", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
+
     }
 
     private void updateUiWithUser(LoggedInUserView model) {

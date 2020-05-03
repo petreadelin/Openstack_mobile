@@ -8,6 +8,7 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.Session2Command;
 import android.media.session.MediaSessionManager;
 import android.os.Bundle;
@@ -133,8 +134,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()) {
 
             case R.id.logout:{
-                Intent MainIntent = new Intent( MainActivity.this, LoginActivity.class);
-                startActivity(MainIntent);
+
+                SharedPreferences preferences = getSharedPreferences("checkbox", MODE_PRIVATE);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putString("remember", "false");
+                editor.apply();
+
+                finish();
             }
         }
 
