@@ -1,5 +1,6 @@
 package com.petrique.openstack.data;
 
+import com.petrique.openstack.DatabaseHelper;
 import com.petrique.openstack.data.model.LoggedInUser;
 
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.io.IOException;
  */
 public class LoginDataSource {
 
-    public Result<LoggedInUser> login(String username, String password) {
+    public Result<LoggedInUser> login(String username, String password, DatabaseHelper db) {
 
         try {
             // TODO: handle loggedInUser authentication
@@ -20,10 +21,11 @@ public class LoginDataSource {
                             "Jane Doe");
             return new Result.Success<>(fakeUser);
              */
+           boolean res = db.checkUser(username, password);
 
-            if(username.equalsIgnoreCase("tenant1") && password.equalsIgnoreCase("pass123"))
+            if(res == true)
             {
-                LoggedInUser userData = new LoggedInUser(java.util.UUID.randomUUID().toString(),"Petre Adelin");
+                LoggedInUser userData = new LoggedInUser(java.util.UUID.randomUUID().toString(),username);
                 return new Result.Success<>(userData);
             }
             else

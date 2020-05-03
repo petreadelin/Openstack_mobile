@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import android.content.Intent;
 import android.util.Patterns;
 
+import com.petrique.openstack.DatabaseHelper;
 import com.petrique.openstack.data.LoginRepository;
 import com.petrique.openstack.data.Result;
 import com.petrique.openstack.data.model.LoggedInUser;
@@ -17,6 +18,7 @@ public class LoginViewModel extends ViewModel {
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
     private LoginRepository loginRepository;
+
 
     LoginViewModel(LoginRepository loginRepository) {
         this.loginRepository = loginRepository;
@@ -30,9 +32,10 @@ public class LoginViewModel extends ViewModel {
         return loginResult;
     }
 
-    public void login(String username, String password) {
+    public void login(String username, String password, DatabaseHelper db) {
+
         // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+        Result<LoggedInUser> result = loginRepository.login(username, password, db);
 
 
         if (result instanceof Result.Success) {

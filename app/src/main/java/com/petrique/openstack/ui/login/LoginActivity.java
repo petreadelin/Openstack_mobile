@@ -23,14 +23,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.petrique.openstack.DatabaseHelper;
 import com.petrique.openstack.MainActivity;
 import com.petrique.openstack.R;
+import com.petrique.openstack.RegisterActivity;
 import com.petrique.openstack.ui.login.LoginViewModel;
 import com.petrique.openstack.ui.login.LoginViewModelFactory;
 
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
+    DatabaseHelper db;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,8 +42,10 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel = ViewModelProviders.of(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
 
+        db = new DatabaseHelper(this);
         final EditText usernameEditText = findViewById(R.id.username);
         final EditText passwordEditText = findViewById(R.id.password);
+        final TextView registerTextView = findViewById(R.id.register);
         final Button loginButton = findViewById(R.id.login);
         final ProgressBar loadingProgressBar = findViewById(R.id.loading);
 
@@ -105,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     loginViewModel.login(usernameEditText.getText().toString(),
-                            passwordEditText.getText().toString());
+                            passwordEditText.getText().toString(), db);
                 }
                 return false;
             }
@@ -115,9 +120,29 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+//                String user = usernameEditText.getText().toString().trim();
+//                String pass = passwordEditText.getText().toString().trim();
+//                Boolean res = db.checkUser(user, pass);
+//                if(res == true)
+//                {
+//                    Toast.makeText(LoginActivity.this, "Successfully Logged In!", Toast.LENGTH_SHORT).show();
+//                }
+//                else
+//                {
+//                    Toast.makeText(LoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
+//                }
+
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
-                        passwordEditText.getText().toString());
+                        passwordEditText.getText().toString(), db);
+            }
+        });
+
+        registerTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent registerIntent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(registerIntent);
             }
         });
     }
