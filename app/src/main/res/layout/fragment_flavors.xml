@@ -333,13 +333,5 @@
 
     </TableLayout>
 
-    <ImageButton
-        android:id="@+id/imageButton"
-        android:layout_width="67dp"
-        android:layout_height="64dp"
-        android:layout_below="@+id/table_flavours"
-        android:layout_marginTop="15dp"
-        app:srcCompat="@android:drawable/ic_input_add" />
-
 </RelativeLayout>
 
