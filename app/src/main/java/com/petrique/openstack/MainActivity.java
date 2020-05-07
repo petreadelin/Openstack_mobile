@@ -1,5 +1,12 @@
 package com.petrique.openstack;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,18 +14,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.Session2Command;
-import android.media.session.MediaSessionManager;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-
 import com.google.android.material.navigation.NavigationView;
 import com.petrique.openstack.OverviewFragment.OverviewFragment;
-import com.petrique.openstack.ui.login.LoginActivity;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawer;
@@ -30,6 +27,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
+
 
         if (getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -72,9 +72,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         new FlavorsFragment()).commit();
                 break;
 
-            case R.id.nav_images:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new ImagesFragment()).commit();
+//            case R.id.nav_images:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new ImagesFragment()).commit();
+//                break;
+
+            case R.id.nav_googleMaps:
+                Intent intent = new Intent(MainActivity.this, GoogleMaps.class);
+                startActivity(intent);
                 break;
 
             case R.id.nav_networks:
@@ -95,10 +100,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 break;
                 */
 
-            case R.id.nav_security:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SecurityFragment()).commit();
-                break;
+//            case R.id.nav_security:
+//                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+//                        new SecurityFragment()).commit();
+//                break;
 
             /*
             case R.id.nav_networks:
@@ -126,6 +131,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.main_menu, menu);
+
+//        MenuItem item = menu.findItem(R.id.blank);
+//        item.setVisible(true);
+//        item.setEnabled(false);
         return true;
     }
 
